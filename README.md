@@ -1,4 +1,4 @@
-<h1 align="center">Hey, I'm Sushant 👋</h1>
+<h1 align="center">Hey, I'm Sushant!</h1>
 
 <p align="center">
   Developer specializing in ML, AI & Robotics, with a deep interest in Quant Finance.<br/>
