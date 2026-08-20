@@ -1,28 +1,22 @@
-# mohitvirli.github.io
-Hello there! I'm Mohit Virli, frontend engineer by profession, a creative at heart.
+# Sushant's Portfolio
 
-This is the updated version of my personal website which is now in 3D. LFG!
+Hey! I'm Sushant — a Developer specializing in ML, AI & Robotics, with a massive interest in Quant Finance. Currently a CSE undergrad at TIET.
 
-Checkout the live version at [https://clevir.li/](https://clevir.li/)
+I'm very ADHD-pilled in everything I love and bring a lot of fun & interesting ideas to life (I call them SideQuests and lore-maxxing).
 
-> Note: this repository is also used as a template. If you want to deploy your own custom domain, set `GH_PAGES_CUSTOM_DOMAIN` in the workflow and the build will generate `public/CNAME` automatically. Use `NEXT_PUBLIC_GA_ID` to enable Google Analytics tracking. Otherwise, leave the custom domain env unset and the repo will continue to work as a GitHub Pages site.
+I love nerding out about ML, Finance, inference infrastructure & architecture, hardware (FPGAs, Microcontrollers), Robotics, LLMs, Mathematics, Physics, Astronomy, retro gaming, and developing scaled-down versions of insanely complex solutions like Tesla's HydraNET and Palantir's Gotham.
+
+Currently working on:
+Developing SNN-BNN ultra-low latency inference on FPGAs for quant firms.
+Building a Macintosh entirely from scratch (literally starting from logic gates).
+Prev: WorldQuant.
+
+Follow along to stay in the loop :)
 
 ## Tech Stack
 
-- Next.js
-- React
-- React-three-fiber
-- DREI
-- GSAP
-- Zustand
-- Tailwind
-
-## Preview
-Some of the sample images from the app. Better to check it out live!
-
-<img width="1242" alt="image" src="https://github.com/user-attachments/assets/877b0685-8d86-4f8b-b123-f3cc17d46fc7" />
-<img width="1241" alt="image" src="https://github.com/user-attachments/assets/09a92647-1781-4124-ba3f-1d6fb66f6974" />
-<img width="1241" alt="image" src="https://github.com/user-attachments/assets/a15017f4-f1f2-459e-b895-b3c14703635b" />
-<img width="1428" height="830" alt="image" src="https://github.com/user-attachments/assets/9f78c2e8-991c-4507-8ffb-72e61513c031" />
-
-
+- Speaking to Machines: C, C++, Python, Golang, TS/JS,
+- Making Machines Think (AI/ML): PyTorch, TensorFlow, vLLM, plus the heavy lifting(Distributed Inference, GPU Fleet Orchestration, Inference Gateways)
+- Building the Architecture: FastAPI, Django, Gin, Node.js/Express, Docker, Kubernetes
+- Storing the Lore (Databases): Postgres, MongoDB, MySQL, Supabase, Firebase
+- The Utilities: Git, Prisma, WebSockets, Postman.
