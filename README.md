@@ -36,7 +36,7 @@ Follow along to stay in the loop :p
 ## Tech Stack
 
 ### Speaking to Machines
-`C` `C++` `Python` `Golang` `TypeScript / JavaScript` `.NET` `R`
+`C` `C++` `Python` `Golang` `TypeScript / JavaScript`
 
 ### Making Machines Think (AI/ML)
 `PyTorch` `TensorFlow` `vLLM` `Distributed Inference` `GPU Fleet Orchestration` `Inference Gateways` `JAX` `CleanRL` `Ray RLlib` `TensorRT` `ONNX`
