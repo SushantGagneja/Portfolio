@@ -3,6 +3,7 @@
 import { Text } from "@react-three/drei";
 
 import { useProgress } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -14,6 +15,7 @@ import TextWindow from "./TextWindow";
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
   const { progress } = useProgress();
+  const { viewport } = useThree();
 
   useEffect(() => {
     if (progress === 100 && titleRef.current) {
@@ -33,12 +35,15 @@ const Hero = () => {
     fontSize: 2.0,
   };
 
+  const textScale = Math.min(1, viewport.width / 16);
+  const windowScale = Math.min(1, viewport.width / 8);
+
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>Hey, I am Sushant Gagneja.</Text>
+      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef} scale={textScale}>Hey, I am Sushant Gagneja.</Text>
       <StarsContainer />
       <CloudContainer />
-      <group position={[0, -25, 5.69]}>
+      <group position={[0, -25, 5.69]} scale={windowScale}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10} />
         <WindowModel receiveShadow />
         <TextWindow />

@@ -1,20 +1,19 @@
 import { Svg, Text, useCursor, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { FOOTER_LINKS } from "../../constants";
 import { FooterLink } from "../../types";
 
-const FooterLinkItem = ({ link }: { link: FooterLink }) => {
+const FooterLinkItem = ({ link, isMobileLayout }: { link: FooterLink, isMobileLayout: boolean }) => {
   const textRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
   const onPointerOver = () => setHovered(true);
   const onPointerOut = () => setHovered(false);
   const onClick = () => window.open(link.url, '_blank');
   const onPointerMove = (e: MouseEvent) => {
-    if (isMobile) return;
+    if (isMobileLayout) return;
     const hoverDiv = document.getElementById(`footer-link-${link.name}`);
     gsap.to(hoverDiv, {
       top: `${e.clientY + 14}px`,
@@ -50,7 +49,7 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   }, [])
 
   useEffect(() => {
-    if (isMobile) return
+    if (isMobileLayout) return
 
     const hoverDiv = document.getElementById(`footer-link-${link.name}`);
 
@@ -73,7 +72,7 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 
   useCursor(hovered);
 
-  if (isMobile) {
+  if (isMobileLayout) {
     return <Svg onClick={onClick} scale={0.0015} position={[0.1, 0.25, 0]} src={link.icon} />;
   }
 
@@ -87,6 +86,8 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 const Footer = () => {
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
+  const { viewport } = useThree();
+  const isMobileLayout = viewport.width < 6;
 
   useFrame(() => {
     const d = data.range(0.8, 0.2);
@@ -98,8 +99,8 @@ const Footer = () => {
   const getLinks = () => {
     return FOOTER_LINKS.map((link, i) => {
       return (
-        <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
-          <FooterLinkItem link={link}/>
+        <group key={i} position={[i * (isMobileLayout ? 1.1 : 2), 0, 0]}>
+          <FooterLinkItem link={link} isMobileLayout={isMobileLayout} />
         </group>
       );
     });
@@ -108,7 +109,7 @@ const Footer = () => {
   return (
     <group position={[0, -44, 18]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef}>
       <group position={[
-        -(FOOTER_LINKS.length - 1) * (isMobile ? 1.1 : 2) / 2,
+        -(FOOTER_LINKS.length - 1) * (isMobileLayout ? 1.1 : 2) / 2,
         0,
         0
       ]}>

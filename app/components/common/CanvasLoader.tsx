@@ -5,7 +5,6 @@ import { AdaptiveDpr, Preload, ScrollControls, useProgress } from "@react-three/
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { Suspense, useRef, useSyncExternalStore } from "react";
-import { isMobile } from "react-device-detect";
 
 import { useThemeStore } from "@stores";
 
@@ -30,7 +29,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
     right: 0,
     opacity: 0,
     overflow: "hidden",
-    ...(mounted && !isMobile && {
+    ...(mounted && window.innerWidth >= 768 && {
       inset: '1rem',
       width: 'calc(100% - 2rem)',
       height: 'calc(100% - 2rem)',
