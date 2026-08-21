@@ -4,7 +4,6 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { usePortalStore } from '@stores';
 import gsap from "gsap";
 import { useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { TriangleGeometry } from './Triangle';
 
@@ -24,7 +23,8 @@ const GridTile = (props: GridTileProps) => {
   const hoverBoxRef = useRef<THREE.Mesh>(null);
   const portalRef = useRef(null);
   const { title, textAlign, children, color, position, id } = props;
-  const { camera } = useThree();
+  const { camera, viewport } = useThree();
+  const isMobileLayout = viewport.width < 6;
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
@@ -32,7 +32,7 @@ const GridTile = (props: GridTileProps) => {
 
   useEffect(() => {
     // Hanlde the hover box and title animation for mobile.
-    if (isMobile && titleRef.current) {
+    if (isMobileLayout && titleRef.current) {
       const isWork = id === 'work';
       gsap.to(titleRef.current, {
         fontSize: 0.13,
@@ -50,7 +50,7 @@ const GridTile = (props: GridTileProps) => {
 
   useFrame(() => {
     const d = data.range(0.95, 0.05);
-    if (isMobile && titleRef.current) {
+    if (isMobileLayout && titleRef.current) {
       /* eslint-disable  @typescript-eslint/no-explicit-any */
       (titleRef.current as any).fillOpacity = d;
     }
@@ -139,7 +139,7 @@ const GridTile = (props: GridTileProps) => {
   };
 
   const onPointerOver = () => {
-    if (isActive || isMobile) return;
+    if (isActive || isMobileLayout) return;
     document.body.style.cursor = 'pointer';
     gsap.to(titleRef.current, {
       fillOpacity: 1
@@ -151,7 +151,7 @@ const GridTile = (props: GridTileProps) => {
   };
 
   const onPointerOut = () => {
-    if (isMobile) return;
+    if (isMobileLayout) return;
     document.body.style.cursor = 'auto';
     gsap.to(titleRef.current, {
       fillOpacity: 0
@@ -163,7 +163,7 @@ const GridTile = (props: GridTileProps) => {
   };
 
   const getGeometry = () => {
-    if (!isMobile) {
+    if (!isMobileLayout) {
       return <planeGeometry args={[4, 4, 1]} />
     }
 
