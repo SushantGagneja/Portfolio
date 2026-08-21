@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { isMobile } from "react-device-detect";
+import { useThree } from "@react-three/fiber";
 import ProjectTile from "./ProjectTile";
 
 import { PROJECTS } from "@constants";
@@ -9,9 +9,11 @@ const ProjectsCarousel = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
   const activeId = isActive ? selectedId : null;
+  const { viewport } = useThree();
+  const isMobileLayout = viewport.width < 6;
 
   const onClick = (id: number) => {
-    if (!isMobile) return;
+    if (!isMobileLayout) return;
     setSelectedId(id === selectedId ? null : id);
   };
   const tiles = useMemo(() => {
