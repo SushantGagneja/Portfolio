@@ -35,15 +35,16 @@ const Hero = () => {
     fontSize: 2.0,
   };
 
-  const textScale = Math.min(1, viewport.width / 16);
-  const windowScale = Math.min(1, viewport.width / 8);
+  const isMobileLayout = viewport.width < 6;
+  const textScale = Math.max(0.7, Math.min(1, viewport.width / 16));
+  const windowScale = Math.max(0.6, Math.min(1, viewport.width / 8));
 
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef} scale={textScale}>Hey, I am Sushant Gagneja.</Text>
+      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef} scale={textScale} maxWidth={viewport.width * 0.9}>Hey, I am Sushant Gagneja.</Text>
       <StarsContainer />
       <CloudContainer />
-      <group position={[0, -25, 5.69]} scale={windowScale}>
+      <group position={[isMobileLayout ? 0.5 : 0, -25, 5.69]} scale={windowScale}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10} />
         <WindowModel receiveShadow />
         <TextWindow />
