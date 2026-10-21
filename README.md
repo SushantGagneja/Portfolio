@@ -56,3 +56,4 @@ Follow along to stay in the loop :p
 ---
 
 <p align="center"><i>Building weird things, one SideQuest at a time.</i></p>
+socials:
