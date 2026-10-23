@@ -2,7 +2,6 @@
 
 <p align="center">
   Developer specializing in ML, AI & Robotics, with a deep interest in Quant Finance.<br/>
-  CSE undergrad at TIET.
 </p>
 
 ---
